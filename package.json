@@ -1,0 +1,24 @@
+{
+  "name": "pages",
+  "version": "1.0.0",
+  "description": "GitHub push → Cloudflare Workers 자동 빌드·배포 정적 사이트.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaktb/pages.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chaktb/pages/issues"
+  },
+  "homepage": "https://github.com/chaktb/pages#readme",
+  "devDependencies": {
+    "wrangler": "^4.103.0"
+  }
+}
