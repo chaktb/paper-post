@@ -4,10 +4,14 @@
 GitHub에 push하면 Cloudflare Workers(Static Assets)가 자동으로 빌드·배포하는 정적 사이트.
 
 ## 구조
-- `index.html`, `about.html` — 페이지
-- `style.css` — 스타일
-- `main.js` — 클라이언트 스크립트
-- `wrangler.toml` — Cloudflare Workers 설정 (정적 자산 서빙)
+- `public/` — **배포되는 모든 웹 파일은 여기에 둔다** (Cloudflare 자산 디렉토리)
+  - `public/index.html`, `public/about.html` — 페이지
+  - `public/style.css` — 스타일
+  - `public/main.js` — 클라이언트 스크립트
+- `wrangler.toml` — Cloudflare Workers 설정 (`directory = "./public"`)
+- 루트의 `node_modules`, `package.json` 등은 배포되지 않는다.
+
+⚠️ 새 페이지/자산은 반드시 `public/` 안에 만든다. 루트에 두면 배포에 포함되지 않는다.
 
 ## 작업 규칙 (Cloudflare 라우팅 주의)
 Cloudflare는 기본 `html_handling: "auto-trailing-slash"`로 동작한다:

@@ -1,9 +1,10 @@
 name = "pages"
 compatibility_date = "2026-06-22"
 
-# 정적 사이트 — 빌드 과정 없이 현재 디렉토리의 파일을 그대로 서빙합니다.
+# 정적 사이트 — public/ 폴더의 파일만 서빙합니다.
+# (루트 전체를 지정하면 node_modules까지 업로드되어 25MiB 제한에 걸립니다)
 [assets]
-directory = "./"
+directory = "./public"
 
 # 기본 html_handling = "auto-trailing-slash":
 #   /about.html  → 307 redirect → /about
