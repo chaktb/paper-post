@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Cloudflare / Wrangler
+.wrangler/
+.dev.vars
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/

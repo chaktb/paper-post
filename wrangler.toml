@@ -1,0 +1,11 @@
+name = "pages"
+compatibility_date = "2026-06-22"
+
+# 정적 사이트 — 빌드 과정 없이 현재 디렉토리의 파일을 그대로 서빙합니다.
+[assets]
+directory = "./"
+
+# 기본 html_handling = "auto-trailing-slash":
+#   /about.html  → 307 redirect → /about
+#   /about       → 200 (about.html 서빙)
+# 따라서 내부 링크는 확장자 없이(/about), 자산은 절대경로(/style.css)로 작성하세요.
