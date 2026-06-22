@@ -64,6 +64,10 @@ h2 {
   border-radius: 10px;
   padding: 1.5rem;
 }
+.card ul { margin: 0; padding-left: 1.3rem; }
+.card li { margin: .35rem 0; }
+.card ul ul { margin-top: .35rem; }
+.card strong { color: var(--core); }
 
 table { width: 100%; border-collapse: collapse; }
 th, td {
