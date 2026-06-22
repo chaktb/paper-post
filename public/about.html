@@ -7,12 +7,28 @@
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <main>
+  <header>
     <h1>소개</h1>
     <p>두 번째 페이지 예시입니다.</p>
     <nav>
-      <a href="/">← 홈으로</a>
+      <a href="/">홈</a>
+      <a href="/about">소개</a>
+      <a href="https://github.com/chaktb/pages">GitHub</a>
     </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>이 페이지 정보</h2>
+      <div class="card">
+        <p>새 페이지·이미지·CSS·JS 등 배포할 파일은 모두 <code>public/</code> 폴더 안에 만드세요.
+           루트에 두면 배포에 포함되지 않습니다.</p>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    Powered by Cloudflare Workers · <a href="https://github.com/chaktb/pages">소스 보기</a>
+  </footer>
 </body>
 </html>

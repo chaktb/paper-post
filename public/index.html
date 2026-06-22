@@ -7,14 +7,37 @@
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <main>
+  <header>
     <h1>🚀 배포 성공</h1>
-    <p>이 페이지는 GitHub에 push하면 Cloudflare가 자동으로 빌드·배포합니다.</p>
-    <p>Claude Code로 바이브 코딩을 시작하세요.</p>
+    <p>GitHub에 push하면 Cloudflare가 자동으로 빌드·배포합니다.</p>
     <nav>
-      <a href="/about">소개 페이지 →</a>
+      <a href="/">홈</a>
+      <a href="/about">소개</a>
+      <a href="https://github.com/chaktb/pages">GitHub</a>
     </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>시작하기</h2>
+      <div class="card">
+        <p>이 사이트는 Claude Code로 바이브 코딩하도록 설정되어 있습니다.
+           코드를 수정하고 <code>git push</code>만 하면 자동으로 배포됩니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>배포 워크플로우</h2>
+      <pre><code>git add -A
+git commit -m "변경 내용"
+git push          # → Cloudflare 자동 배포 (30~90초)</code></pre>
+    </section>
   </main>
+
+  <footer>
+    Powered by Cloudflare Workers · <a href="https://github.com/chaktb/pages">소스 보기</a>
+  </footer>
+
   <script src="/main.js"></script>
 </body>
 </html>
