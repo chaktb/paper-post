@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PsiQuantum 광양자컴퓨팅 (Omega) · New technologies post</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script>(function(){try{var t=localStorage.getItem("pdl-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+</head>
+<body>
+  <header>
+    <h1>실리콘 포토닉스 기반 대규모 광양자컴퓨팅 — PsiQuantum "Omega"</h1>
+    <p>A Manufacturable Platform for Photonic Quantum Computing (PsiQuantum) · OECC 2025 초청강연 · 학회 발표 슬라이드 요약</p>
+    <nav>
+      <a href="/">← Papers summery</a>
+      <a href="https://github.com/chaktb/pages">GitHub</a>
+      <button class="theme-toggle" type="button"><span class="icon">☀️</span><span class="label">라이트</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <p style="color:var(--muted);font-size:.85rem;margin:0 0 1.5rem;">발행일 2026-07-01 · 발표 장소 OECC 2025 (부산 Paradise Hotel)</p>
+
+    <section>
+      <h2>한 줄 요약</h2>
+      <div class="card">
+        <p style="margin:0;">PsiQuantum이 <strong>실리콘 포토닉스 + 융합 기반 양자컴퓨팅(FBQC)</strong>으로 <strong>백만 큐비트 규모</strong>의 광양자컴퓨터를 만드는 접근을 소개한 강연. 8년간 개발한 <strong>"Omega"</strong> 플랫폼(<em>Nature</em> 2025)의 핵심 소자 성능과 극저온 확장 로드맵을 제시했다. 광자는 열을 안 타고(저잡음), CMOS 공정으로 대량 생산이 가능하다는 점이 핵심 논거.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>배경 — 왜 양자컴퓨터, 왜 광자인가</h2>
+      <div class="card">
+        <ul>
+          <li>대규모 양자컴퓨터는 고전 컴퓨터로 불가능한 문제(신소재·신약·암호해독·전지 등)를 풀 잠재력.</li>
+          <li>큐비트 방식은 <strong>물질 기반</strong>(초전도, 양자점, 이온트랩, 중성원자, annealer)과 <strong>광 기반</strong>(광자 = 실리콘 포토닉스)으로 나뉜다.</li>
+          <li>PsiQuantum은 <strong>실리콘 포토닉스(광자 큐비트)</strong>를 선택 — 아래 세 가지 이유.</li>
+        </ul>
+        <table>
+          <thead><tr><th>강점</th><th>이유</th></tr></thead>
+          <tbody>
+            <tr><td><strong>저잡음 (Low noise)</strong></td><td>광자는 열을 느끼지 않음 · 양자 crosstalk 없음 · 빠른 측정으로 엔트로피 제거</td></tr>
+            <tr><td><strong>확장성 (Scalable)</strong></td><td>mK 극저온 불필요 · 변환기(transducer) 없이 양자 인터커넥트 · 기하학적 제약 적음</td></tr>
+            <tr><td><strong>제조성 (Manufacturable)</strong></td><td>원자 수준 제작 불필요 · CMOS·BEOL 호환 → 대량 생산</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>아키텍처 — 융합 기반 양자컴퓨팅 (FBQC)</h2>
+      <div class="card">
+        <ul>
+          <li>기본 빌딩블록: <strong>광자 생성 → 조작(간섭계) → 검출</strong>.</li>
+          <li>FBQC 흐름: <strong>Heralded 단일광자원(HSPS)</strong> → <strong>리소스 상태 생성(RSG)</strong> → <strong>Fusion network</strong>(간섭계+단일광자 검출) → <strong>고전 프로세서</strong>(디코더).</li>
+          <li>핵심 특징: <strong>오류 정정과 연산을 같은 fusion 측정으로 동시 수행</strong>. 광학 깊이가 얕고 일정(constant, shallow) — 확장에 유리. (Nat. Commun. 14, 912, 2023)</li>
+        </ul>
+      </div>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <defs>
+            <marker id="fa" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L7,3 L0,6 Z" fill="var(--accent)"/>
+            </marker>
+          </defs>
+          <g text-anchor="middle" font-size="11">
+            <!-- HSPS -->
+            <rect x="20" y="60" width="110" height="60" rx="6" fill="var(--core)" opacity="0.25" stroke="var(--core)"/>
+            <text x="75" y="86" fill="var(--core)" font-weight="600">HSPS</text>
+            <text x="75" y="104" fill="var(--muted)" font-size="9">단일광자원</text>
+            <!-- RSG -->
+            <rect x="180" y="60" width="110" height="60" rx="6" fill="var(--accent-soft)" stroke="var(--accent)"/>
+            <text x="235" y="86" fill="var(--accent)" font-weight="600">RSG</text>
+            <text x="235" y="104" fill="var(--muted)" font-size="9">리소스 상태</text>
+            <!-- Fusion -->
+            <rect x="340" y="60" width="120" height="60" rx="6" fill="var(--accent-soft)" stroke="var(--accent)"/>
+            <text x="400" y="86" fill="var(--accent)" font-weight="600">Fusion network</text>
+            <text x="400" y="104" fill="var(--muted)" font-size="9">간섭계+검출</text>
+            <!-- Classical -->
+            <rect x="510" y="60" width="120" height="60" rx="6" fill="var(--panel)" stroke="var(--border)"/>
+            <text x="570" y="86" fill="var(--fg)" font-weight="600">고전 프로세서</text>
+            <text x="570" y="104" fill="var(--muted)" font-size="9">디코더</text>
+          </g>
+          <g stroke="var(--accent)" stroke-width="1.6">
+            <line x1="130" y1="90" x2="178" y2="90" marker-end="url(#fa)"/>
+            <line x1="290" y1="90" x2="338" y2="90" marker-end="url(#fa)"/>
+            <line x1="460" y1="90" x2="508" y2="90" marker-end="url(#fa)"/>
+          </g>
+          <!-- feed-forward loop -->
+          <path d="M570,60 C570,30 400,30 400,58" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#fa)"/>
+          <text x="470" y="26" font-size="9" fill="var(--muted)" text-anchor="middle">feed-forward 측정 설정</text>
+          <text x="360" y="150" font-size="9" fill="var(--muted)">← 얕고 일정한 광학 깊이 →</text>
+          <text x="235" y="150" font-size="9" fill="var(--muted)" text-anchor="middle">single photons</text>
+        </svg>
+        <figcaption>그림 1. 융합 기반 양자컴퓨팅(FBQC) 아키텍처 — 단일광자원(HSPS) → 리소스 상태(RSG) → Fusion network → 고전 프로세서. 오류정정과 연산을 같은 fusion 측정으로 수행하며 feed-forward로 설정을 되먹인다.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Omega 플랫폼</h2>
+      <div class="card">
+        <ul>
+          <li>8년 개발 · 수천 장 웨이퍼 · 수백만 컴포넌트 · <strong>백만 큐비트 규모 칩셋</strong>을 목표.</li>
+          <li>300mm 웨이퍼 스케일, SiN 광 도파로(~400nm) 기반. <em>Nature</em> "A manufacturable platform for photonic quantum computing" (2025)로 발표.</li>
+          <li>주요 집적 소자: 광자원 · 빔스플리터 · scatter mitigation 필터 · tunerless 광원 · BTO 스위치 · 광자수 분해 검출기.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>핵심 소자 성능</h2>
+      <div class="card">
+        <table>
+          <thead><tr><th>지표</th><th>값</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>스펙트럼 순도 (Spectral purity)</td><td><code>99.5% ± 0.1%</code></td><td>광원</td></tr>
+            <tr><td>펌프 억압 (Pump suppression)</td><td><code>99.1 dB ± 1.2</code></td><td>필터 네트워크</td></tr>
+            <tr><td>소광비 (Extinction ratio)</td><td><code>50 dB ± 1.2</code></td><td>온칩 MZI 간섭계</td></tr>
+            <tr><td>검출기 효율 (Detector efficiency)</td><td><code>93.4%</code> (median)</td><td>온칩 최대 99%</td></tr>
+            <tr><td>HOM 가시도 (2광자 간섭)</td><td><code>99.72% ± 0.14</code></td><td>tunerless 광원</td></tr>
+          </tbody>
+        </table>
+        <p style="margin:1rem 0 .3rem;"><strong>수동소자 손실 (300mm, 모두 &lt;1 mdB)</strong></p>
+        <ul>
+          <li>교차(Crossing): <code>0.27 ± 0.1 mdB</code> (99.993%, crosstalk &lt;80dB)</li>
+          <li>스플리터: <code>0.564 ± 0.03 mdB</code> (99.987%, split 편차 0.99%)</li>
+          <li>벤드(90°): <code>0.25 ± 0.03 mdB</code> (99.994%)</li>
+          <li>도파로 손실: 단일모드 <strong>1.3 dB/m</strong>, 멀티모드 <strong>0.1 dB/m</strong></li>
+        </ul>
+      </div>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <!-- 4개 핵심 지표 게이지 (모두 % 스케일, 90~100 확대) -->
+          <g text-anchor="middle">
+            <!-- helper: bar from x, value 90..100 mapped to width 0..120 -->
+            <!-- 스펙트럼 순도 99.5 -->
+            <text x="90" y="30" font-size="10" fill="var(--muted)">스펙트럼 순도</text>
+            <rect x="30" y="42" width="120" height="14" rx="7" fill="var(--panel)" stroke="var(--border)"/>
+            <rect x="30" y="42" width="114" height="14" rx="7" fill="var(--core)"/>
+            <text x="90" y="72" font-size="13" fill="var(--core)" font-weight="600">99.5%</text>
+            <!-- 검출기 효율 93.4 -->
+            <text x="230" y="30" font-size="10" fill="var(--muted)">검출기 효율</text>
+            <rect x="170" y="42" width="120" height="14" rx="7" fill="var(--panel)" stroke="var(--border)"/>
+            <rect x="170" y="42" width="88.8" height="14" rx="7" fill="var(--accent)"/>
+            <text x="230" y="72" font-size="13" fill="var(--accent)" font-weight="600">93.4%</text>
+            <!-- HOM 가시도 99.72 -->
+            <text x="370" y="30" font-size="10" fill="var(--muted)">HOM 가시도</text>
+            <rect x="310" y="42" width="120" height="14" rx="7" fill="var(--panel)" stroke="var(--border)"/>
+            <rect x="310" y="42" width="116.6" height="14" rx="7" fill="var(--core)"/>
+            <text x="370" y="72" font-size="13" fill="var(--core)" font-weight="600">99.72%</text>
+            <!-- 소광비 50 dB (별도 스케일) -->
+            <text x="500" y="30" font-size="10" fill="var(--muted)">소광비</text>
+            <rect x="470" y="42" width="60" height="14" rx="7" fill="var(--panel)" stroke="var(--border)"/>
+            <rect x="470" y="42" width="50" height="14" rx="7" fill="var(--accent)"/>
+            <text x="500" y="72" font-size="13" fill="var(--accent)" font-weight="600">50 dB</text>
+          </g>
+          <line x1="30" y1="92" x2="530" y2="92" stroke="var(--border)" stroke-dasharray="3 3"/>
+          <!-- 충실도 4종 -->
+          <g text-anchor="middle" font-size="10">
+            <text x="280" y="112" fill="var(--muted)">양자 벤치마킹 충실도 (fidelity)</text>
+          </g>
+          <g text-anchor="middle">
+            <!-- SPAM 99.98 -->
+            <text x="90" y="138" font-size="9.5" fill="var(--muted)">단일큐비트 SPAM</text>
+            <rect x="30" y="146" width="120" height="12" rx="6" fill="var(--panel)" stroke="var(--border)"/>
+            <rect x="30" y="146" width="119.5" height="12" rx="6" fill="var(--core)"/>
+            <text x="90" y="176" font-size="12" fill="var(--core)" font-weight="600">99.98%</text>
+            <!-- interconnect 99.72 -->
+            <text x="215" y="138" font-size="9.5" fill="var(--muted)">인터커넥트</text>
+            <rect x="170" y="146" width="120" height="12" rx="6" fill="var(--panel)" stroke="var(--border)"/>
+            <rect x="170" y="146" width="116.6" height="12" rx="6" fill="var(--accent)"/>
+            <text x="230" y="176" font-size="12" fill="var(--accent)" font-weight="600">99.72%</text>
+            <!-- 양자간섭 99.5 -->
+            <text x="355" y="138" font-size="9.5" fill="var(--muted)">양자 간섭</text>
+            <rect x="310" y="146" width="120" height="12" rx="6" fill="var(--panel)" stroke="var(--border)"/>
+            <rect x="310" y="146" width="114" height="12" rx="6" fill="var(--accent)"/>
+            <text x="370" y="176" font-size="12" fill="var(--accent)" font-weight="600">99.5%</text>
+            <!-- fusion 99.2 -->
+            <text x="500" y="138" font-size="9.5" fill="var(--muted)">2큐비트 Fusion</text>
+            <rect x="450" y="146" width="120" height="12" rx="6" fill="var(--panel)" stroke="var(--border)"/>
+            <rect x="450" y="146" width="110.4" height="12" rx="6" fill="var(--core)"/>
+            <text x="510" y="176" font-size="12" fill="var(--core)" font-weight="600">99.2%</text>
+          </g>
+          <text x="280" y="205" font-size="8.5" fill="var(--muted)" text-anchor="middle">※ 상단 막대는 90~100% 구간을 확대한 상대 표시(소광비 제외).</text>
+        </svg>
+        <figcaption>그림 2. Omega 플랫폼 핵심 성능·충실도 요약 — 소자 지표(상단)와 양자 벤치마킹 충실도(하단). 대부분 99% 이상의 높은 값을 보인다.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>능동 소자 · 검출기 · 패키징</h2>
+      <div class="card">
+        <ul>
+          <li><strong>광자수 분해 검출기(PNR)</strong>: ~100nm NbN 초전도 나노와이어(SNSPD), 50-unit cell, 극저온 저잡음 증폭기 연동, 온칩 효율 <strong>99%</strong>.</li>
+          <li><strong>BTO(BaTiO₃) 위상 변조기</strong>: Vπ ~3V (Vπ·L ≈ 0.6 V·cm), 전파손실 &lt;0.3 dB/cm → 삽입손실 &lt;100 mdB, <strong>&gt;20 GHz</strong> 3dB 대역폭.</li>
+          <li><strong>64×64 BTO 광스위치</strong>: 2.5D 칩렛 패키징(22층 유기 인터포저), 양면 flip-chip 4×EIC, <strong>2 Gbps</strong> 스위칭 검증.</li>
+          <li><strong>초저손실 엣지 커플러</strong>: SMF-28 <code>127 mdB</code>(97%), UHNA <code>52 mdB</code>(99%). 칩-파이버 패키징 단일 프로브 <code>127→65 mdB</code>(2024→2025), 24포트 어레이 <code>84 mdB</code>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>확장 로드맵 — 극저온 시스템</h2>
+      <div class="card">
+        <ul>
+          <li>확장 단계: <strong>컴포넌트 → 광칩 → 보드 조립 → 극저온 캐비닛 → 시설(facility)</strong>.</li>
+          <li>극저온(cryoplant) 세대: <strong>M1</strong>(2022, 세계 최초 완전집적 양자 포토닉 칩) → <strong>PsiCube</strong>(2023, chandelier-free 고출력 cryostat) → <strong>MK1</strong>(2024, 10배 많은 칩) → <strong>MK2</strong>(2025, 다중 Cryoblade) → <strong>네트워크 캐비닛</strong>(blade 밀도 증가).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>의의 / 한계</h2>
+      <div class="card">
+        <ul>
+          <li><strong>의의:</strong> "양자컴퓨터를 반도체처럼 제조한다"는 접근을 300mm 파운드리 공정·실측 데이터로 뒷받침. 광자 방식의 실용적 확장 경로를 제시.</li>
+          <li><strong>강점:</strong> mK 극저온 없이 상당수 동작 가능, CMOS 호환, 컴포넌트 손실이 mdB 수준으로 매우 낮음.</li>
+          <li><strong>한계(요지):</strong> 광자 손실·확률적 소자 특성상 대규모 다중화(multiplexing)와 극저온 검출기가 여전히 필요. 백만 큐비트 규모는 로드맵상 목표이며 전체 시스템 실증은 진행 중.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>메모 — PDL 관점</h2>
+      <div class="card">
+        <ul>
+          <li><strong>SiN 300mm 수동소자 손실(교차·스플리터·벤드 &lt;1mdB, 도파로 0.1~1.3 dB/m)</strong>은 우리 저손실 도파로/스플리터 목표의 벤치마크로 유용.</li>
+          <li><strong>BTO 위상 변조기(Vπ·L 0.6 V·cm, &gt;20GHz)</strong>와 <strong>엣지 커플러(52 mdB)</strong>는 우리 변조기·PM FA·패키징 과제와 직접 비교 가능.</li>
+          <li>"제조성(CMOS/BEOL 호환) 우선" 설계 철학과 웨이퍼 레벨 균일도 평가 방식은 우리 양산 지향 소자 개발에 시사점이 큼.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>출처</h2>
+      <div class="card">
+        <ul>
+          <li>발표: PsiQuantum (Corp. Palo Alto, CA, USA / Ltd. Daresbury, UK), OECC 2025 초청강연</li>
+          <li>핵심 논문: "A manufacturable platform for photonic quantum computing", <em>Nature</em> (2025-02-26)</li>
+          <li>아키텍처: "Fusion-based quantum computation", <em>Nat. Commun.</em> 14, 912 (2023)</li>
+          <li>형식: 학회 발표 슬라이드 촬영본 19장 종합 요약</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Powered by Cloudflare Workers · <a href="https://github.com/chaktb/pages">소스 보기</a>
+  </footer>
+  <script src="/main.js"></script>
+</body>
+</html>
