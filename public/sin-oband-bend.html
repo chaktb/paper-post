@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Si₃N₄ O-band 25µm 벤드 · New technologies post</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script>(function(){try{var t=localStorage.getItem("pdl-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+</head>
+<body>
+  <header>
+    <h1>Modified Hermite 최적화로 만든 Si₃N₄ O-band 25µm 벤드</h1>
+    <p>Si₃N₄ Bend at O-Band with 25-µm Radius and 5 mdB/90° via Modified Hermite Optimization · Donghao Li, Yi Xu, Lei Zhang (BUPT) · 학회 포스터 요약</p>
+    <nav>
+      <a href="/">← Papers summery</a>
+      <a href="https://github.com/chaktb/pages">GitHub</a>
+      <button class="theme-toggle" type="button"><span class="icon">☀️</span><span class="label">라이트</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <p style="color:var(--muted);font-size:.85rem;margin:0 0 1.5rem;">발행일 2026-07-01</p>
+
+    <section>
+      <h2>한 줄 요약</h2>
+      <div class="card">
+        <p style="margin:0;"><strong>Modified Hermite</strong> 곡선으로 도파로 벤드 형상을 설계해, 반경 <strong>25µm</strong>의 초소형 Si₃N₄ 90° 벤드에서 O-band(1311nm) 굽힘 손실 <strong>5.18 ± 0.38 mdB/90°</strong>를 8인치 웨이퍼 위에서 실측 시연한 연구. 데이터센터·HPC용 고집적 단거리 광연결(short-reach interconnect)을 겨냥한다.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>배경</h2>
+      <div class="card">
+        <ul>
+          <li>데이터센터·HPC의 트래픽 증가로 <strong>소형·저전력 단거리 광연결</strong> 수요 확대.</li>
+          <li><strong>O-band(저분산) + 실리콘나이트라이드(Si₃N₄)</strong> 조합이 이런 링크에 이상적.</li>
+          <li>고집적화의 관건은 <strong>굽힘 손실(bending loss)</strong> — 반경을 줄이면 손실이 커지는 문제.</li>
+          <li>이 연구는 Modified Hermite 설계로 25µm 반경에서도 저손실을 달성.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>원리 / 설계</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Modified Hermite 벤드</strong>: 두 개의 Hermite 곡선이 도파로 입출력점(P₃, P₄)에서 시작·종료하며, 내측/외측 경계를 이룬다. 네 개의 고정점은 굽힘 반경 <em>R</em>로 결정된다.</li>
+          <li>곡선은 매개변수 <em>t</em>(0→1)로 표현되며, 45°에서 도파로 폭이 최대가 되는 구조적 대칭성을 가진다. 이 대칭성 덕분에 계수가 <code>a₁=a₃, a₂=a₄</code>로 묶여, <strong>고정 반경에서 손실 최소화가 a₁·a₂ 두 파라미터 최적화로 단순화</strong>된다.</li>
+          <li>시뮬레이션상 초저 전파 손실, 우수한 파장 무의존성, 높은 공정 오차 허용도를 보인다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>최적화 방법</h2>
+      <div class="card">
+        <ul>
+          <li><strong>3D-FDTD</strong> 솔버로 준기본 TE₀ 모드 해석.</li>
+          <li><strong>PSO(입자 군집 최적화, Particle Swarm Optimization)</strong>로 파라미터 탐색 → 최적값 <code>a₁ = 44.0</code>, <code>a₂ = 50.7</code>.</li>
+          <li>최적 파라미터로 TE₀·TE₁ 굽힘 손실을 3D-FDTD로 재시뮬레이션 → 1311nm에서 TE₀ 손실 <strong>약 4 mdB/90°</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>제작 / 실험 결과</h2>
+      <div class="card">
+        <ul>
+          <li>8인치 실리콘 웨이퍼 위에 <strong>180nm 포토리소그래피</strong>로 제작.</li>
+          <li>광 스택: <strong>LPCVD</strong>로 성장한 300nm SiN 코어, 하부 8µm BOX, 상부 3.55µm 실리카 클래딩.</li>
+          <li>25µm 벤드의 cut-back 측정: 손실–벤드 개수의 선형 상관 → 피팅 굽힘 손실 <strong>5.42 mdB/90°</strong>.</li>
+          <li>웨이퍼 레벨 균일도 검증: 벤드 손실 <strong>4.19 ~ 5.87 mdB/90°</strong>, 평균 <strong>5.18 ± 0.38 mdB/90°</strong> — 공정 균일성 우수.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>State-of-the-Art 비교</h2>
+      <div class="card">
+        <p style="margin:0 0 1rem;">기존 O-band SiN 벤드와의 성능 비교 (Table II). 본 연구는 <strong>LPCVD 공정</strong>이면서 30µm급 <strong>PECVD</strong> 소자와 대등한 손실을 25µm 반경에서 달성.</p>
+        <table>
+          <thead>
+            <tr><th>연도 / Ref.</th><th>반경 R (µm)</th><th>벤드 손실 (mdB/90°)</th><th>파장 (nm)</th><th>공정</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2025 / [3]</td><td>30</td><td><code>4</code></td><td>1311</td><td>PECVD</td></tr>
+            <tr><td>2025 / [4]</td><td>30</td><td><code>3.3</code></td><td>1310</td><td>NA</td></tr>
+            <tr><td>2026 / [5]</td><td>25</td><td><code>37</code></td><td>1310</td><td>PECVD</td></tr>
+            <tr><td><strong>This work</strong></td><td><strong>25</strong></td><td><code>5.18</code></td><td>1311</td><td><strong>LPCVD</strong></td></tr>
+          </tbody>
+        </table>
+        <p style="margin:1rem 0 0;color:var(--muted);font-size:.9rem;">※ 특히 같은 25µm 반경의 PECVD 소자([5], 37 mdB/90°) 대비 큰 폭의 손실 개선.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>의의 / 한계</h2>
+      <div class="card">
+        <ul>
+          <li><strong>의의:</strong> 형상 설계(Modified Hermite)만으로 25µm 초소형 반경에서 저손실을 확보 — 고집적 O-band 포토닉 회로에 유리. 웨이퍼 레벨 균일도까지 입증.</li>
+          <li><strong>대칭성 활용:</strong> 2-파라미터(a₁, a₂) 최적화로 설계 공간을 크게 축소해 PSO 탐색을 효율화.</li>
+          <li><strong>한계(요지):</strong> TE₀ 기준 결과가 중심이며, 고차 모드·편광·대역 전반의 특성은 추가 검증 여지가 있음(포스터 범위 밖).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>메모 — PDL 관점</h2>
+      <div class="card">
+        <ul>
+          <li>도파로 <strong>벤드 형상 최적화로 굽힘 손실을 줄이는 접근</strong>은 우리 도파로/IOC 레이아웃 설계에 직접 참고 가능(오일러 벤드 대안).</li>
+          <li>"구조적 대칭성 → 파라미터 결합 → 최적화 차원 축소" 아이디어는 다른 소자 설계에도 응용 가치가 있음.</li>
+          <li>LPCVD SiN + 실리카 클래딩 스택과 cut-back 손실 측정 절차는 우리 공정·평가 흐름과 비교해볼 만함.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>출처</h2>
+      <div class="card">
+        <ul>
+          <li>저자: Donghao Li¹, Yi Xu¹, Lei Zhang¹²* (교신저자, zhang-lei@bupt.edu.cn)</li>
+          <li>소속: ¹School of Integrated Circuits, ²State Key Laboratory of Information Photonics and Optical Communications, Beijing University of Posts and Telecommunications (BUPT)</li>
+          <li>지원: State Key Laboratory (BUPT) IPOC2024ZZ03, Beijing Natural Science Foundation L259017, NSFC U24B20135</li>
+          <li>형식: 학회 발표 포스터 (BUPT iPOST LAB)</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Powered by Cloudflare Workers · <a href="https://github.com/chaktb/pages">소스 보기</a>
+  </footer>
+  <script src="/main.js"></script>
+</body>
+</html>
