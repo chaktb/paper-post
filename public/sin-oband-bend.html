@@ -49,6 +49,51 @@
           <li>시뮬레이션상 초저 전파 손실, 우수한 파장 무의존성, 높은 공정 오차 허용도를 보인다.</li>
         </ul>
       </div>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <defs>
+            <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="var(--muted)"/>
+            </marker>
+          </defs>
+          <!-- 좌하단 입력 도파로 → 우상단 출력. 90° 벤드. -->
+          <!-- 기준 중심선(점선, 순수 원호) -->
+          <path d="M70,340 L70,190 A120,120 0 0 1 190,70 L340,70" fill="none"
+            stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/>
+          <!-- 외측 경계 (Hermite, 바깥으로 부풀어 45°에서 폭 최대) -->
+          <path d="M96,340 L96,196 C96,150 150,96 196,96 L340,96" fill="none"
+            stroke="var(--accent)" stroke-width="2"/>
+          <!-- 내측 경계 (Hermite) -->
+          <path d="M44,340 L44,184 C44,108 108,44 184,44 L340,44" fill="none"
+            stroke="var(--core)" stroke-width="2"/>
+          <!-- 코어 채움 -->
+          <path d="M44,340 L44,184 C44,108 108,44 184,44 L340,44 L340,96 L196,96 C150,96 96,150 96,196 L96,340 Z"
+            fill="var(--accent-soft)"/>
+          <!-- 고정점 -->
+          <g fill="var(--fg)">
+            <circle cx="44"  cy="340" r="3.5"/><text x="30" y="356" font-size="10">P₁</text>
+            <circle cx="96"  cy="340" r="3.5"/><text x="100" y="356" font-size="10">P₃</text>
+            <circle cx="340" cy="44"  r="3.5"/><text x="346" y="42" font-size="10" fill="var(--core)">P₄, M₄</text>
+            <circle cx="340" cy="96"  r="3.5"/><text x="346" y="104" font-size="10" fill="var(--accent)">P₂, M₂</text>
+          </g>
+          <!-- 45° 방향 최대 폭(Wmax) 표시 -->
+          <line x1="70" y1="190" x2="120" y2="140" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 2"/>
+          <text x="150" y="185" font-size="10" fill="var(--muted)">Wmax (45°)</text>
+          <!-- 입력 폭 W -->
+          <line x1="44" y1="330" x2="96" y2="330" stroke="var(--fg)" stroke-width="1" marker-start="url(#ar)" marker-end="url(#ar)"/>
+          <text x="20" y="326" font-size="10" fill="var(--fg)">W</text>
+          <!-- 반경 R -->
+          <line x1="70" y1="190" x2="70" y2="340" stroke="var(--muted)" stroke-width="1"/>
+          <text x="46" y="270" font-size="10" fill="var(--muted)">R</text>
+          <!-- 라벨 -->
+          <text x="200" y="120" font-size="10" fill="var(--core)">Inner boundary</text>
+          <text x="140" y="230" font-size="10" fill="var(--accent)">Outer boundary</text>
+          <text x="30" y="376" font-size="9" fill="var(--muted)">입력 도파로</text>
+          <text x="300" y="30" font-size="9" fill="var(--muted)">출력 도파로</text>
+        </svg>
+        <figcaption>그림 1. Modified Hermite 벤드 형상 (Fig. 1 재현) — 내측(노랑)·외측(파랑) 경계가 Hermite 곡선을 이루며, 45° 방향에서 도파로 폭이 최대(Wmax)가 된다. 네 고정점 P₁~P₄는 굽힘 반경 R로 결정된다.</figcaption>
+      </figure>
     </section>
 
     <section>
@@ -91,6 +136,51 @@
         </table>
         <p style="margin:1rem 0 0;color:var(--muted);font-size:.9rem;">※ 특히 같은 25µm 반경의 PECVD 소자([5], 37 mdB/90°) 대비 큰 폭의 손실 개선.</p>
       </div>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <!-- 벤드 손실 비교 막대그래프 (log 느낌 없이 선형, 37이 워낙 커서 축약 표시) -->
+          <!-- y축 -->
+          <line x1="70" y1="30" x2="70" y2="250" stroke="var(--border)" stroke-width="1"/>
+          <line x1="70" y1="250" x2="500" y2="250" stroke="var(--border)" stroke-width="1"/>
+          <g fill="var(--muted)" font-size="10" text-anchor="end">
+            <text x="64" y="253">0</text>
+            <text x="64" y="200">10</text>
+            <text x="64" y="150">20</text>
+            <text x="64" y="100">30</text>
+            <text x="64" y="53">40</text>
+          </g>
+          <g stroke="var(--border)" stroke-width="0.5" stroke-dasharray="2 3">
+            <line x1="70" y1="200" x2="500" y2="200"/>
+            <line x1="70" y1="150" x2="500" y2="150"/>
+            <line x1="70" y1="100" x2="500" y2="100"/>
+            <line x1="70" y1="53"  x2="500" y2="53"/>
+          </g>
+          <text x="24" y="150" font-size="10" fill="var(--muted)" transform="rotate(-90 24 150)" text-anchor="middle">벤드 손실 (mdB/90°)</text>
+          <!-- 막대: 값 = mdB, y = 250 - val*5 (10mdB=50px) -->
+          <!-- [3] 30µm PECVD 4 -->
+          <rect x="100" y="230" width="60" height="20" fill="var(--clad)"/>
+          <text x="130" y="224" font-size="10" fill="var(--fg)" text-anchor="middle">4</text>
+          <text x="130" y="266" font-size="9.5" fill="var(--muted)" text-anchor="middle">[3] 30µm</text>
+          <text x="130" y="278" font-size="8.5" fill="var(--muted)" text-anchor="middle">PECVD</text>
+          <!-- [4] 30µm 3.3 -->
+          <rect x="190" y="233.5" width="60" height="16.5" fill="var(--clad)"/>
+          <text x="220" y="227" font-size="10" fill="var(--fg)" text-anchor="middle">3.3</text>
+          <text x="220" y="266" font-size="9.5" fill="var(--muted)" text-anchor="middle">[4] 30µm</text>
+          <text x="220" y="278" font-size="8.5" fill="var(--muted)" text-anchor="middle">NA</text>
+          <!-- [5] 25µm PECVD 37 -->
+          <rect x="280" y="65" width="60" height="185" fill="var(--muted)"/>
+          <text x="310" y="59" font-size="10" fill="var(--fg)" text-anchor="middle">37</text>
+          <text x="310" y="266" font-size="9.5" fill="var(--muted)" text-anchor="middle">[5] 25µm</text>
+          <text x="310" y="278" font-size="8.5" fill="var(--muted)" text-anchor="middle">PECVD</text>
+          <!-- This work 25µm LPCVD 5.18 -->
+          <rect x="370" y="224.1" width="60" height="25.9" fill="var(--core)"/>
+          <text x="400" y="218" font-size="10" fill="var(--core)" text-anchor="middle" font-weight="600">5.18</text>
+          <text x="400" y="266" font-size="9.5" fill="var(--core)" text-anchor="middle" font-weight="600">This work</text>
+          <text x="400" y="278" font-size="8.5" fill="var(--core)" text-anchor="middle">25µm · LPCVD</text>
+        </svg>
+        <figcaption>그림 2. State-of-the-art 벤드 손실 비교 — 같은 25µm 반경에서 기존 PECVD 소자([5], 37 mdB/90°) 대비 본 연구(5.18 mdB/90°, 노랑)가 약 7배 낮은 손실을 달성. 30µm급 저손실 소자([3],[4])와도 대등한 수준.</figcaption>
+      </figure>
     </section>
 
     <section>
