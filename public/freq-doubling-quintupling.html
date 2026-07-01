@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>위상-세기 변조 기반 주파수 2~5배 체배 · PDL Projects</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>위상→세기 변조를 이용한 주파수 2배~5배 체배</h1>
+    <p>Frequency Doubling to Quintupling by Using Phase to Intensity Modulation · Sangjoon Park, Kyoungsik Yu (KAIST EE) · 학회 포스터 요약</p>
+    <nav>
+      <a href="/">← Projects</a>
+      <a href="https://github.com/chaktb/pages">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <p style="color:var(--muted);font-size:.85rem;margin:0 0 1.5rem;">발행일 2026-07-01</p>
+
+    <section>
+      <h2>한 줄 요약</h2>
+      <div class="card">
+        <p style="margin:0;">위상 변조기(phase modulator)와 단일모드 광섬유의 <strong>분산(dispersion)</strong>을 이용해 위상 변조를 세기 변조로 바꾸고, 이를 통해 밀리미터파 대역 RF 신호의 <strong>2배·3배·4배·5배 주파수 체배</strong>를 하나의 간단한 구성으로 실험 시연한 마이크로파 포토닉스(MWP) 연구.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>배경 — 마이크로파 포토닉스(MWP)</h2>
+      <div class="card">
+        <ul>
+          <li>MWP의 장점: 초광대역, 저손실 광 분배, 전자기 간섭에 강한 내성 — mm파 신호 생성, RoF(Radio-over-Fiber), 광 빔포밍 네트워크, 포토닉 RF 필터에 활용.</li>
+          <li>최근 MWP 시스템은 <strong>60 GHz 이상</strong>의 캐리어 주파수에 집중.</li>
+          <li>기존 포토닉 RF 주파수 체배 방식: 위상잠금루프(PLL), 주입잠금(injection locking), 외부 변조(external modulation).</li>
+          <li>이 중 <strong>외부 변조</strong>가 구성이 단순하고 재현성이 높으며 표준 MWP와 호환되어 가장 실용적 — 본 연구가 채택한 접근.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>방법 / 이론</h2>
+      <div class="card">
+        <ul>
+          <li><strong>위상→세기 변조 개념:</strong> CW 레이저 → 위상 변조기 → 광섬유(분산 매질) → 광검출기(PD). 위상 변조가 분산을 거치며 세기 변조로 변환됨.</li>
+          <li>이상적 위상→세기 변조에서 <em>k</em>차 고조파 진폭은 대략
+            <br /><code>|i_k(ω_m, β₂L)| ∝ |J_k( 2m·sin(½ β₂ L ω_m²) )|</code>
+            <br />형태로, 누적 분산에 대해 <strong>주기적·대칭적</strong>으로 변한다. → 높은 변조 주파수에서 고차 체배 최적화가 가능.</li>
+          <li><strong>성능 지표(FOM) 정의:</strong> 원하는 체배 톤이 다른 고조파 대비 얼마나 지배적인지 정량화 —
+            <br /><code>⟨i_n/m⟩² / Σ_k ( (i_k/m)² − (i_n/m)² )</code></li>
+          <li>FOM으로 찾은 <strong>최적 변조 지수(modulation index):</strong> 2배 ≈ 0.7π rad, 3배 ≈ 0.61π rad, 4배·5배는 π rad 부근.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>실험 구성</h2>
+      <div class="card">
+        <ul>
+          <li>파장 λ₁ = 1550 nm 튜너블 레이저(TLS) → 편광 조절기 → LiNbO₃ 위상 변조기 → G.652D 단일모드 광섬유(SMF) → 광검출기(PD) → 샘플링 오실로스코프.</li>
+          <li>순수 정현파 RF와 충분한 위상 변조를 얻기 위해 RF 필터 뒤에 <strong>RF 증폭기</strong> 사용.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>결과</h2>
+      <div class="card">
+        <p style="margin:0 0 1rem;">이론에서 유도한 FOM을 적용해 최적 조건을 찾고, <strong>2배부터 5배까지</strong>의 주파수 체배를 실험적으로 시연. 대역 제한과 HPF 억압을 적용해 불요 성분을 줄인 뒤에도 목표 RF 파워를 <strong>−25 dBm 이상</strong>으로 유지.</p>
+        <table>
+          <thead>
+            <tr><th>체배</th><th>출력 주파수</th><th>비고</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>×2</td><td><code>25 GHz</code></td><td>−22 dBm, 억압 ~30 dB</td></tr>
+            <tr><td>×3</td><td><code>30 GHz</code></td><td>—</td></tr>
+            <tr><td>×4</td><td><code>15.2 GHz</code></td><td>−22.522 dBm, 억압 ~27 dB</td></tr>
+            <tr><td>×5</td><td><code>15.3 GHz</code></td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p style="margin:1rem 0 0;color:var(--muted);font-size:.9rem;">※ 수치는 포스터 그림·표에서 읽은 값으로, 표기가 불명확한 항목은 생략함.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>주파수 4배 체배 비교</h2>
+      <div class="card">
+        <p style="margin:0 0 1rem;">4차 고조파 생성에서 기존 방식(DPMZM, DSMZM, MZM null point)과 본 연구(위상→세기 변조, "This work")를 비교.</p>
+        <table>
+          <thead>
+            <tr><th>방식</th><th>최대 4차 고조파 크기 (A.U.)</th><th>필요 RF 신호 수</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>DPMZM</td><td><code>0.12</code></td><td>4</td></tr>
+            <tr><td>DSMZM</td><td><code>0.12</code></td><td>4</td></tr>
+            <tr><td><strong>This work</strong> (위상→세기)</td><td><code>0.32</code></td><td>1</td></tr>
+          </tbody>
+        </table>
+        <ul>
+          <li>위상→세기 변조 방식이 목표 주파수에서 <strong>더 높은 RF 파워</strong> 제공 (기존 4배 체배 대비 잠재적 이점).</li>
+          <li>더 낮은 RF 구동 전압과 더 낮은 RF 소스 주파수로 체배 가능 (4배 체배 기준).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>의의 / 한계</h2>
+      <div class="card">
+        <ul>
+          <li><strong>의의:</strong> 단일 위상 변조기 + 광섬유 분산이라는 간단한 구성으로 2~5배 체배를 모두 커버 — 저삽입손실, 단순 구성, 목표 주파수에서 높은 출력 파워.</li>
+          <li><strong>확장성:</strong> 변조기·광검출기 대역폭이 향상되면 더 높은 주파수로 확장 가능할 것으로 기대.</li>
+          <li><strong>한계(요지):</strong> 고차 체배 시 불요 고조파 억압을 위한 대역 제한·HPF가 필요하며, 실용 파워 확보를 위해 RF 증폭이 요구됨.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>메모 — PDL 관점</h2>
+      <div class="card">
+        <ul>
+          <li>LiNbO₃ 위상 변조기 + SMF 분산 기반 접근으로, 우리 <strong>phase modulator / IOC</strong> 프로젝트와 소자·플랫폼 측면에서 연관성이 큼.</li>
+          <li>"위상 변조 → 분산 → 세기 변조" 변환의 주기적·대칭적 특성(β₂L ω_m² 항)은 도파로 분산 설계 시 참고할 만함.</li>
+          <li>FOM 기반 변조 지수 최적화(2배 0.7π, 3배 0.61π, 4·5배 ≈ π)는 유사 체배 실험 설계 시 초기 동작점 참고치로 활용 가능.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>출처</h2>
+      <div class="card">
+        <ul>
+          <li>저자: Sangjoon Park, Kyoungsik Yu (교신저자, ksyu@kaist.edu)</li>
+          <li>소속: School of Electrical Engineering, KAIST, Daejeon 34141, Korea</li>
+          <li>지원: 한국 정부 IITP Grant 2022-0-00239-001, 00337182</li>
+          <li>형식: 학회 발표 포스터 (2026-06-30)</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Powered by Cloudflare Workers · <a href="https://github.com/chaktb/pages">소스 보기</a>
+  </footer>
+</body>
+</html>
