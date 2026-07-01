@@ -61,6 +61,107 @@
           <li>순수 정현파 RF와 충분한 위상 변조를 얻기 위해 RF 필터 뒤에 <strong>RF 증폭기</strong> 사용.</li>
         </ul>
       </div>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <defs>
+            <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+              <path d="M0,0 L7,3 L0,6 Z" fill="#58a6ff"/>
+            </marker>
+          </defs>
+          <!-- RF chain (top) -->
+          <g font-size="10" fill="#e6edf3" text-anchor="middle">
+            <circle cx="470" cy="34" r="16" fill="#161b22" stroke="#30363d"/>
+            <text x="470" y="30">Sine</text><text x="470" y="42">source</text>
+            <rect x="520" y="20" width="52" height="28" rx="4" fill="#161b22" stroke="#30363d"/>
+            <text x="546" y="38">RF Amp</text>
+            <rect x="600" y="20" width="52" height="28" rx="4" fill="#161b22" stroke="#30363d"/>
+            <text x="626" y="38">RF filter</text>
+          </g>
+          <line x1="486" y1="34" x2="518" y2="34" stroke="#58a6ff" marker-end="url(#arr)"/>
+          <line x1="572" y1="34" x2="598" y2="34" stroke="#58a6ff" marker-end="url(#arr)"/>
+          <line x1="626" y1="48" x2="626" y2="86" stroke="#58a6ff" marker-end="url(#arr)"/>
+          <!-- optical chain (bottom) -->
+          <g font-size="10.5" fill="#e6edf3" text-anchor="middle">
+            <!-- TLS -->
+            <rect x="20" y="90" width="70" height="42" rx="6" fill="#243b53" stroke="#58a6ff"/>
+            <text x="55" y="108">TLS</text><text x="55" y="122" font-size="8.5" fill="#9aa7b4">1550 nm</text>
+            <!-- Pol controller -->
+            <rect x="120" y="90" width="70" height="42" rx="6" fill="#161b22" stroke="#30363d"/>
+            <text x="155" y="107">편광</text><text x="155" y="121">조절기</text>
+            <!-- Phase modulator -->
+            <rect x="220" y="90" width="90" height="42" rx="6" fill="#f2c14e22" stroke="#f2c14e"/>
+            <text x="265" y="107" fill="#f2c14e">위상변조기</text><text x="265" y="121" font-size="8.5" fill="#9aa7b4">LiNbO₃</text>
+            <!-- SMF (coil) -->
+            <rect x="340" y="90" width="120" height="42" rx="6" fill="#161b22" stroke="#30363d"/>
+            <text x="400" y="107">SMF (분산)</text><text x="400" y="121" font-size="8.5" fill="#9aa7b4">G.652D</text>
+            <!-- PD -->
+            <rect x="490" y="90" width="60" height="42" rx="6" fill="#161b22" stroke="#30363d"/>
+            <text x="520" y="115">PD</text>
+            <!-- scope -->
+            <rect x="580" y="90" width="90" height="42" rx="6" fill="#161b22" stroke="#30363d"/>
+            <text x="625" y="107">샘플링</text><text x="625" y="121">오실로스코프</text>
+          </g>
+          <g stroke="#f2c14e" stroke-width="1.5">
+            <line x1="90" y1="111" x2="118" y2="111" marker-end="url(#arr)" stroke="#58a6ff"/>
+            <line x1="190" y1="111" x2="218" y2="111" marker-end="url(#arr)" stroke="#58a6ff"/>
+            <line x1="310" y1="111" x2="338" y2="111" marker-end="url(#arr)" stroke="#58a6ff"/>
+            <line x1="460" y1="111" x2="488" y2="111" marker-end="url(#arr)" stroke="#58a6ff"/>
+            <line x1="550" y1="111" x2="578" y2="111" marker-end="url(#arr)" stroke="#58a6ff"/>
+          </g>
+          <text x="265" y="152" font-size="8.5" fill="#9aa7b4" text-anchor="middle">위상 변조</text>
+          <text x="400" y="152" font-size="8.5" fill="#9aa7b4" text-anchor="middle">→ 분산 변환</text>
+          <text x="520" y="152" font-size="8.5" fill="#9aa7b4" text-anchor="middle">→ 세기 변조 검출</text>
+        </svg>
+        <figcaption>그림 1. 실험 셋업 — RF 체인(상단)이 위상변조기를 구동하고, 광 신호(하단)가 SMF 분산을 거쳐 세기 변조로 변환되어 PD에서 검출된다.</figcaption>
+      </figure>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 720 170" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <!-- phase modulated wave -->
+          <text x="90" y="24" font-size="11" fill="#f2c14e" text-anchor="middle">위상 변조 (일정 세기)</text>
+          <path id="pm" fill="none" stroke="#f2c14e" stroke-width="2"
+            d="M10,90 Q30,55 50,90 T90,90 T130,90 T170,90"/>
+          <line x1="10" y1="120" x2="170" y2="120" stroke="#30363d"/>
+          <!-- arrow: dispersion -->
+          <text x="300" y="80" font-size="11" fill="#9aa7b4" text-anchor="middle">SMF 분산</text>
+          <text x="300" y="96" font-size="9" fill="#9aa7b4" text-anchor="middle">β₂ · L</text>
+          <line x1="200" y1="90" x2="400" y2="90" stroke="#58a6ff" stroke-width="2"
+            marker-end="url(#arr)"/>
+          <!-- intensity modulated wave -->
+          <text x="560" y="24" font-size="11" fill="#58a6ff" text-anchor="middle">세기 변조 (고조파 생성)</text>
+          <path fill="none" stroke="#58a6ff" stroke-width="2"
+            d="M430,90 C445,40 460,140 475,90 C490,45 505,135 520,90 C535,42 550,138 565,90 C580,45 595,135 610,90 C625,48 640,132 655,90"/>
+          <line x1="430" y1="120" x2="700" y2="120" stroke="#30363d"/>
+        </svg>
+        <figcaption>그림 2. 핵심 개념 — 일정한 세기의 위상 변조 신호가 광섬유 분산(β₂·L)을 통과하면 세기 변조로 바뀌고, 이때 여러 차수의 RF 고조파가 생성된다.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>인터랙티브 계산기 — 고조파 진폭</h2>
+      <div class="card">
+        <p style="margin:0 0 .6rem;">포스터의 핵심 수식을 직접 계산해 봅니다. 위상→세기 변조에서 <em>k</em>차 고조파 진폭은</p>
+        <p style="text-align:center;margin:.4rem 0 1rem;"><code>|i<sub>k</sub>| ∝ | J<sub>k</sub>( 2m · sin( ½ · β₂L · ω<sub>m</sub>² ) ) |</code></p>
+        <p style="margin:0 0 1rem;color:var(--muted);font-size:.9rem;">여기서 <strong>m</strong>은 변조 지수(π rad 단위), <strong>β₂L·ω<sub>m</sub>²</strong>는 누적 분산 위상항입니다. 슬라이더를 움직이면 각 차수(1~5차) 고조파의 상대 진폭이 실시간으로 계산됩니다.</p>
+
+        <div style="display:grid;grid-template-columns:1fr;gap:.9rem;margin-bottom:1rem;">
+          <label style="font-size:.9rem;">변조 지수 m = <strong id="mVal" style="color:var(--core);">0.70</strong> π rad
+            <input id="mSlider" type="range" min="0" max="2" step="0.01" value="0.70" style="width:100%;accent-color:#58a6ff;"/>
+          </label>
+          <label style="font-size:.9rem;">분산 위상항 D = ½·β₂L·ω<sub>m</sub>² = <strong id="dVal" style="color:var(--core);">1.57</strong> rad
+            <input id="dSlider" type="range" min="0" max="3.1416" step="0.01" value="1.5708" style="width:100%;accent-color:#58a6ff;"/>
+          </label>
+        </div>
+
+        <canvas id="harmChart" width="640" height="280" style="width:100%;height:auto;background:#0a0d12;border:1px solid var(--border);border-radius:8px;"></canvas>
+
+        <table style="margin-top:1rem;">
+          <thead><tr><th>차수 k</th><th>체배</th><th>상대 진폭 |i<sub>k</sub>|</th><th>세기 (dB)</th></tr></thead>
+          <tbody id="harmTable"></tbody>
+        </table>
+        <p style="margin:.8rem 0 0;color:var(--muted);font-size:.85rem;">※ 이상적 위상→세기 변조 모델의 정성적 계산입니다. 실제 소자에서는 손실·대역폭·잡음이 추가됩니다. 포스터의 최적 변조 지수(×2 ≈ 0.7π, ×3 ≈ 0.61π, ×4·×5 ≈ π)를 슬라이더로 확인해 보세요.</p>
+      </div>
     </section>
 
     <section>
@@ -80,6 +181,14 @@
         </table>
         <p style="margin:1rem 0 0;color:var(--muted);font-size:.9rem;">※ 수치는 포스터 그림·표에서 읽은 값으로, 표기가 불명확한 항목은 생략함.</p>
       </div>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <!-- 4개의 시간영역 파형 패널: ×2, ×3, ×4, ×5 -->
+          <g id="wavepanels"></g>
+        </svg>
+        <figcaption>그림 3. ×2~×5 체배 출력 파형(개념 재현) — 체배 배수가 커질수록 같은 시간창 안에 더 많은 주기가 들어간다. 실제 측정값: ×2@25 GHz, ×3@30 GHz, ×4@15.2 GHz, ×5@15.3 GHz.</figcaption>
+      </figure>
     </section>
 
     <section>
@@ -142,5 +251,158 @@
   <footer>
     Powered by Cloudflare Workers · <a href="https://github.com/chaktb/pages">소스 보기</a>
   </footer>
+
+  <script>
+  // ── 정수차 베셀 함수 J_k(x) — lgamma 급수 + 상향재귀 하이브리드 ──
+  // 이 계산기의 인자 범위(0 ~ 4π ≈ 12.6)에서 소수 4자리까지 정확 (scipy 대조 검증).
+  function lgamma(x){
+    const g=7, c=[0.99999999999980993,676.5203681218851,-1259.1392167224028,
+      771.32342877765313,-176.61502916214059,12.507343278686905,
+      -0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];
+    if(x<0.5) return Math.log(Math.PI/Math.sin(Math.PI*x))-lgamma(1-x);
+    x-=1; let a=c[0]; const t=x+g+0.5;
+    for(let i=1;i<g+2;i++) a+=c[i]/(x+i);
+    return 0.5*Math.log(2*Math.PI)+(x+0.5)*Math.log(t)-t+Math.log(a);
+  }
+  function Jseries(n, x){
+    const an=Math.abs(n); let sum=0, half=x/2, sign=1;
+    for(let m=0;m<80;m++){
+      const lt=(2*m+an)*Math.log(Math.abs(half))-lgamma(m+1)-lgamma(m+an+1);
+      sum += sign*Math.exp(lt); sign=-sign;
+      if(Math.exp(lt)<1e-16 && m>an) break;
+    }
+    return (x<0 && an%2===1)?-sum:sum;
+  }
+  function besselJ(n, x){
+    n=Math.abs(n);
+    if(x===0) return n===0?1:0;
+    const ax=Math.abs(x);
+    if(ax < 12) return Jseries(n, x);            // 급수 안정 구간
+    let bjm=Jseries(0,ax), bj=Jseries(1,ax);     // 큰 x: 상향 재귀 (x>n 안정)
+    if(n===0) return bjm;
+    if(n===1) return (x<0?-bj:bj);
+    for(let j=1;j<n;j++){ const bjp=j*(2/ax)*bj-bjm; bjm=bj; bj=bjp; }
+    return (x<0 && n%2===1)?-bj:bj;
+  }
+
+  const mSlider = document.getElementById('mSlider');
+  const dSlider = document.getElementById('dSlider');
+  const mVal = document.getElementById('mVal');
+  const dVal = document.getElementById('dVal');
+  const canvas = document.getElementById('harmChart');
+  const ctx = canvas.getContext('2d');
+  const tbody = document.getElementById('harmTable');
+  const ORDERS = [1,2,3,4,5];
+  const COLORS = { base:'#30363d', bar:'#58a6ff', hi:'#f2c14e' };
+
+  function compute(){
+    const m = parseFloat(mSlider.value);          // π rad 단위
+    const D = parseFloat(dSlider.value);          // 분산 위상항 (rad)
+    const arg = 2 * (m*Math.PI) * Math.sin(D);    // 베셀 함수 인자
+    return ORDERS.map(k => ({ k, amp: Math.abs(besselJ(k, arg)) }));
+  }
+
+  function draw(){
+    const data = compute();
+    const maxAmp = Math.max(...data.map(d=>d.amp), 0.01);
+    const W = canvas.width, H = canvas.height;
+    const padL=48, padB=36, padT=20, padR=16;
+    const plotW = W-padL-padR, plotH = H-padT-padB;
+    ctx.clearRect(0,0,W,H);
+
+    // 축
+    ctx.strokeStyle='#30363d'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(padL,padT); ctx.lineTo(padL,H-padB); ctx.lineTo(W-padR,H-padB); ctx.stroke();
+    // y 눈금
+    ctx.fillStyle='#9aa7b4'; ctx.font='11px -apple-system, sans-serif'; ctx.textAlign='right';
+    for(let i=0;i<=4;i++){
+      const frac=i/4, y=(H-padB)-frac*plotH;
+      ctx.fillStyle='#9aa7b4'; ctx.fillText((maxAmp*frac).toFixed(2), padL-6, y+4);
+      ctx.strokeStyle='#1c2230'; ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke();
+    }
+    ctx.save(); ctx.translate(14,H/2); ctx.rotate(-Math.PI/2);
+    ctx.textAlign='center'; ctx.fillStyle='#9aa7b4'; ctx.fillText('상대 진폭 |i_k|',0,0); ctx.restore();
+
+    // 막대
+    const n=data.length, slot=plotW/n, bw=slot*0.5;
+    const peak=Math.max(...data.map(d=>d.amp));
+    data.forEach((d,idx)=>{
+      const x=padL+slot*idx+(slot-bw)/2;
+      const h=(d.amp/maxAmp)*plotH;
+      const y=(H-padB)-h;
+      ctx.fillStyle = (d.amp===peak && peak>0) ? COLORS.hi : COLORS.bar;
+      ctx.fillRect(x,y,bw,h);
+      ctx.fillStyle='#e6edf3'; ctx.textAlign='center'; ctx.font='11px -apple-system, sans-serif';
+      ctx.fillText('×'+d.k, x+bw/2, H-padB+16);
+      ctx.fillStyle='#9aa7b4'; ctx.font='10px -apple-system, sans-serif';
+      ctx.fillText(d.amp.toFixed(3), x+bw/2, y-5);
+    });
+    ctx.fillStyle='#9aa7b4'; ctx.font='11px -apple-system, sans-serif'; ctx.textAlign='center';
+    ctx.fillText('고조파 차수 (체배 배수)', padL+plotW/2, H-8);
+
+    // 표
+    tbody.innerHTML = data.map(d=>{
+      const db = d.amp>0 ? (20*Math.log10(d.amp/peak)).toFixed(1) : '−∞';
+      const hl = (d.amp===peak && peak>0) ? ' style="color:var(--core);font-weight:600;"' : '';
+      return `<tr${hl}><td>×${d.k}</td><td>${['','기본','2배','3배','4배','5배'][d.k]}</td><td><code>${d.amp.toFixed(4)}</code></td><td>${db} dB</td></tr>`;
+    }).join('');
+  }
+
+  function update(){
+    mVal.textContent = parseFloat(mSlider.value).toFixed(2);
+    dVal.textContent = parseFloat(dSlider.value).toFixed(2);
+    draw();
+  }
+  mSlider.addEventListener('input', update);
+  dSlider.addEventListener('input', update);
+  update();
+
+  // ── 그림 3: ×2~×5 시간영역 파형 패널 생성 ──
+  (function drawWavePanels(){
+    const g = document.getElementById('wavepanels');
+    if(!g) return;
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const panels = [
+      { mult:2, label:'×2 @ 25 GHz' },
+      { mult:3, label:'×3 @ 30 GHz' },
+      { mult:4, label:'×4 @ 15.2 GHz' },
+      { mult:5, label:'×5 @ 15.3 GHz' },
+    ];
+    const pw=160, gap=16, x0=16, y0=30, ph=120, mid=y0+ph/2, amp=ph*0.38;
+    panels.forEach((p,i)=>{
+      const px = x0 + i*(pw+gap);
+      // 제목
+      const t = document.createElementNS(svgNS,'text');
+      t.setAttribute('x', px+pw/2); t.setAttribute('y', y0-8);
+      t.setAttribute('text-anchor','middle'); t.setAttribute('font-size','11');
+      t.setAttribute('fill','#f2c14e'); t.textContent = p.label;
+      g.appendChild(t);
+      // 프레임
+      const r = document.createElementNS(svgNS,'rect');
+      r.setAttribute('x',px); r.setAttribute('y',y0); r.setAttribute('width',pw);
+      r.setAttribute('height',ph); r.setAttribute('rx','4');
+      r.setAttribute('fill','#0a0d12'); r.setAttribute('stroke','#30363d');
+      g.appendChild(r);
+      // 파형 (mult 주기)
+      let d='';
+      const N=240;
+      for(let k=0;k<=N;k++){
+        const xx = px + (k/N)*pw;
+        const yy = mid - amp*Math.sin(2*Math.PI*p.mult*(k/N));
+        d += (k===0?'M':'L') + xx.toFixed(1) + ',' + yy.toFixed(1) + ' ';
+      }
+      const path = document.createElementNS(svgNS,'path');
+      path.setAttribute('d',d); path.setAttribute('fill','none');
+      path.setAttribute('stroke','#58a6ff'); path.setAttribute('stroke-width','1.6');
+      g.appendChild(path);
+      // 시간축 라벨
+      const tl = document.createElementNS(svgNS,'text');
+      tl.setAttribute('x', px+pw/2); tl.setAttribute('y', y0+ph+18);
+      tl.setAttribute('text-anchor','middle'); tl.setAttribute('font-size','9');
+      tl.setAttribute('fill','#9aa7b4'); tl.textContent = 'time →';
+      g.appendChild(tl);
+    });
+  })();
+  </script>
 </body>
 </html>
