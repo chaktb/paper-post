@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{TITLE}} · PDL Projects</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>{{TITLE}}</h1>
+    <p>{{SUBTITLE}}</p>
+    <nav>
+      <a href="/">← Projects</a>
+      <a href="{{SOURCE_URL}}">원문 ↗</a>
+      <a href="https://github.com/chaktb/pages">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <p style="color:var(--muted);font-size:.85rem;margin:0 0 1.5rem;">발행일 {{DATE}}</p>
+
+{{BODY}}
+
+  </main>
+
+  <footer>
+    Powered by Cloudflare Workers · <a href="https://github.com/chaktb/pages">소스 보기</a>
+  </footer>
+</body>
+</html>
