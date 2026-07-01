@@ -1,0 +1,29 @@
+name: Deploy to Cloudflare Workers
+
+# main 브랜치에 push되면 자동으로 Cloudflare Workers에 배포한다.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # 수동 실행도 허용 (Actions 탭에서 버튼으로)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy with Wrangler
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
