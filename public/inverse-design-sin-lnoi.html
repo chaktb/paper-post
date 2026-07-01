@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SiN-LNOI 광소자 역설계 · New technologies post</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script>(function(){try{var t=localStorage.getItem("pdl-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+</head>
+<body>
+  <header>
+    <h1>하이브리드 SiN-on-LiNbO₃ 플랫폼의 광소자 역설계</h1>
+    <p>Inverse Design of Photonic Devices in Hybrid Silicon Nitride-on-Lithium Niobate Platform · Aman Verma, Varun Raghunathan (IISc Bengaluru) · 학회 포스터 요약</p>
+    <nav>
+      <a href="/">← Papers summery</a>
+      <a href="https://github.com/chaktb/pages">GitHub</a>
+      <button class="theme-toggle" type="button"><span class="icon">☀️</span><span class="label">라이트</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <p style="color:var(--muted);font-size:.85rem;margin:0 0 1.5rem;">발행일 2026-07-01</p>
+
+    <section>
+      <h2>한 줄 요약</h2>
+      <div class="card">
+        <p style="margin:0;"><strong>Adjoint 기반 역설계(inverse design)</strong>로 하이브리드 <strong>SiN-on-LNOI</strong>(Silicon Nitride on Lithium Niobate on Insulator) 도파로 플랫폼에서 <strong>50:50 빔 스플리터</strong>와 <strong>모드 변환기(mode converter)</strong>를 설계·제작하고, 실측으로 검증한 연구. 제작 공정을 고려한 최적화로 <strong>25×50 µm²</strong>의 초소형 소자를 구현했다.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>목표</h2>
+      <div class="card">
+        <ul>
+          <li>하이브리드 SiN-LNOI 플랫폼에서 <strong>컴팩트 광소자</strong> 설계.</li>
+          <li><strong>Adjoint 방법 기반 위상(토폴로지) 최적화</strong> 시연.</li>
+          <li>빔 스플리터와 모드 변환기를 <strong>실험적으로 검증</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>플랫폼 / 재료 스택</h2>
+      <div class="card">
+        <ul>
+          <li>SiN(290 nm) 로딩 층 + LN(500 nm) + SiO₂(2 µm) + Si 기판으로 구성된 <strong>SiN-loaded LNOI</strong> 도파로.</li>
+          <li>TE00 기본 모드의 <strong>76.6%가 LN 층에 집중</strong> — LN의 전기광학 특성을 활용하기 유리.</li>
+        </ul>
+      </div>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <!-- 재료 스택 단면 (Fig.1a 재현) -->
+          <!-- Si substrate -->
+          <rect x="60" y="180" width="300" height="34" fill="var(--panel)" stroke="var(--border)"/>
+          <text x="210" y="201" font-size="11" fill="var(--muted)" text-anchor="middle">Si (기판)</text>
+          <!-- SiO2 BOX -->
+          <rect x="60" y="140" width="300" height="40" fill="var(--clad)" stroke="var(--border)"/>
+          <text x="210" y="164" font-size="11" fill="var(--fg)" text-anchor="middle">SiO₂  ·  2 µm</text>
+          <!-- LN -->
+          <rect x="60" y="104" width="300" height="36" fill="#3b5bdb33" stroke="var(--accent)"/>
+          <text x="210" y="127" font-size="11" fill="var(--accent)" text-anchor="middle">LN  ·  500 nm</text>
+          <!-- SiN loaded rib -->
+          <rect x="170" y="76" width="80" height="28" fill="var(--core)" stroke="var(--core)"/>
+          <text x="210" y="95" font-size="10.5" fill="#0d1117" text-anchor="middle" font-weight="600">SiN 290 nm</text>
+          <!-- mode profile hint -->
+          <ellipse cx="210" cy="118" rx="34" ry="18" fill="none" stroke="var(--core)" stroke-dasharray="3 3"/>
+          <text x="210" y="60" font-size="10" fill="var(--muted)" text-anchor="middle">TE00 모드: 76.6% in LN</text>
+          <!-- axes -->
+          <text x="40" y="120" font-size="10" fill="var(--muted)" text-anchor="middle">Y</text>
+          <text x="210" y="226" font-size="10" fill="var(--muted)" text-anchor="middle">X</text>
+        </svg>
+        <figcaption>그림 1. 하이브리드 SiN-LNOI 재료 스택 (Fig. 1a 재현) — SiN 리브(290 nm)가 LN(500 nm) 위에 로딩되고, TE00 모드의 대부분이 LN 층에 갇힌다.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>방법</h2>
+      <div class="card">
+        <ul>
+          <li>하이브리드 SiN-loaded LNOI 도파로 플랫폼.</li>
+          <li><strong>Tidy3D</strong>(클라우드 기반 FDTD)로 전자기 시뮬레이션.</li>
+          <li><strong>픽셀 기반 adjoint 최적화</strong> + 제작 공정 제약(fabrication constraints) 반영.</li>
+          <li>제작: <strong>전자빔 리소그래피(EBL) + 건식 식각(dry etching)</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>시뮬레이션 결과</h2>
+      <div class="card">
+        <ul>
+          <li>TE00→TE20 <strong>모드 변환기</strong>와 <strong>50:50 파워 스플리터</strong> 최적화.</li>
+          <li><strong>40~50 iteration 내 수렴</strong> — 모드 변환 metric 약 90%, 스플리터 약 93% 달성.</li>
+          <li>소자 footprint <strong>25 × 50 µm²</strong>로 매우 컴팩트.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>실험 결과</h2>
+      <div class="card">
+        <ul>
+          <li>1550 nm 레이저(8 mW), <strong>파이버 결합</strong> 측정. 기존 MMI 소자와 비교.</li>
+          <li>SEM·광학현미경으로 50:50 스플리터·모드 변환기 제작 확인.</li>
+        </ul>
+        <p style="margin:1rem 0 .5rem;"><strong>Table I — 측정 출력 파워 (µW)</strong></p>
+        <table>
+          <thead>
+            <tr><th>소자</th><th>First arm</th><th>Second arm</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>역설계 스플리터</strong></td><td><code>9.8 ± 1.65</code></td><td><code>11 ± 1.8</code></td></tr>
+            <tr><td>MMI 스플리터</td><td><code>34.17 ± 4.08</code></td><td><code>42.58 ± 5.89</code></td></tr>
+            <tr><td>모드 변환기</td><td colspan="2" style="text-align:center;"><code>12.17 ± 0.33</code></td></tr>
+          </tbody>
+        </table>
+        <p style="margin:.8rem 0 0;color:var(--muted);font-size:.9rem;">※ 역설계 스플리터는 두 arm 출력이 9.8 : 11로 <strong>거의 50:50</strong>에 근접. MMI 대비 절대 파워는 낮으나 footprint가 훨씬 작다.</p>
+      </div>
+
+      <figure class="figure" style="margin-top:1rem;">
+        <svg viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Noto Sans KR', sans-serif">
+          <!-- 두 arm 출력 파워 막대: 역설계 vs MMI -->
+          <line x1="70" y1="20" x2="70" y2="230" stroke="var(--border)"/>
+          <line x1="70" y1="230" x2="500" y2="230" stroke="var(--border)"/>
+          <g fill="var(--muted)" font-size="10" text-anchor="end">
+            <text x="64" y="233">0</text>
+            <text x="64" y="188">10</text>
+            <text x="64" y="146">20</text>
+            <text x="64" y="104">30</text>
+            <text x="64" y="62">40</text>
+          </g>
+          <g stroke="var(--border)" stroke-width="0.5" stroke-dasharray="2 3">
+            <line x1="70" y1="188" x2="500" y2="188"/>
+            <line x1="70" y1="146" x2="500" y2="146"/>
+            <line x1="70" y1="104" x2="500" y2="104"/>
+            <line x1="70" y1="62"  x2="500" y2="62"/>
+          </g>
+          <text x="26" y="125" font-size="10" fill="var(--muted)" transform="rotate(-90 26 125)" text-anchor="middle">출력 파워 (µW)</text>
+          <!-- scale: 1µW = 4.2px, y = 230 - val*4.2 -->
+          <!-- 역설계 그룹 -->
+          <rect x="120" y="188.8" width="40" height="41.2" fill="var(--core)"/>
+          <text x="140" y="182" font-size="9.5" fill="var(--core)" text-anchor="middle">9.8</text>
+          <rect x="168" y="183.8" width="40" height="46.2" fill="var(--core)" opacity="0.7"/>
+          <text x="188" y="177" font-size="9.5" fill="var(--core)" text-anchor="middle">11</text>
+          <text x="164" y="248" font-size="10" fill="var(--fg)" text-anchor="middle" font-weight="600">역설계 스플리터</text>
+          <text x="164" y="262" font-size="8.5" fill="var(--muted)" text-anchor="middle">≈ 50:50</text>
+          <!-- MMI 그룹 -->
+          <rect x="320" y="86.5" width="40" height="143.5" fill="var(--accent)"/>
+          <text x="340" y="80" font-size="9.5" fill="var(--accent)" text-anchor="middle">34.2</text>
+          <rect x="368" y="51.2" width="40" height="178.8" fill="var(--accent)" opacity="0.7"/>
+          <text x="388" y="45" font-size="9.5" fill="var(--accent)" text-anchor="middle">42.6</text>
+          <text x="364" y="248" font-size="10" fill="var(--fg)" text-anchor="middle">MMI 스플리터</text>
+          <text x="364" y="262" font-size="8.5" fill="var(--muted)" text-anchor="middle">큰 footprint</text>
+          <!-- 범례 -->
+          <rect x="430" y="20" width="10" height="10" fill="var(--muted)"/>
+          <text x="444" y="29" font-size="9" fill="var(--muted)">First arm</text>
+          <rect x="430" y="34" width="10" height="10" fill="var(--muted)" opacity="0.7"/>
+          <text x="444" y="43" font-size="9" fill="var(--muted)">Second arm</text>
+        </svg>
+        <figcaption>그림 2. 스플리터 arm별 출력 파워 비교 — 역설계 스플리터(노랑)는 두 arm이 9.8 / 11 µW로 거의 균등(≈50:50). MMI(파랑)는 절대 파워는 크지만 소자 크기가 훨씬 크다.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>향후 과제</h2>
+      <div class="card">
+        <ul>
+          <li>모드 변환기·파워 스플리터에 더해 <strong>컴팩트 90°·U자형 벤드</strong> 설계.</li>
+          <li><strong>편광 빔 스플리터(polarization beam splitter)</strong> 통합.</li>
+          <li>역설계 기반 <strong>다중포트 간섭계 네트워크</strong> 집적회로.</li>
+          <li>SiN-LNOI 플랫폼 위 <strong>파장 스플리터·필터</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>의의 / 한계</h2>
+      <div class="card">
+        <ul>
+          <li><strong>의의:</strong> Adjoint 역설계가 하이브리드 SiN-LNOI에서 컴팩트 광기능(스플리터·모드변환)을 가능케 함을 실험으로 입증. 고밀도 포토닉 집적에 유망.</li>
+          <li><strong>제작 호환성:</strong> 공정 제약을 최적화에 넣어 실제 EBL·식각으로 재현 가능한 패턴을 얻음.</li>
+          <li><strong>한계(요지):</strong> 역설계 소자의 절대 삽입 파워가 MMI보다 낮게 측정됨(손실 존재). 삽입손실·대역·수율의 추가 개선 여지.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>메모 — PDL 관점</h2>
+      <div class="card">
+        <ul>
+          <li><strong>LNOI + SiN 로딩</strong> 하이브리드는 우리 LNOI 소자 설계와 직접 맞닿는 플랫폼 — 모드가 LN에 갇히면서도 SiN으로 패터닝하는 접근을 참고할 만함.</li>
+          <li><strong>Adjoint/토폴로지 역설계 + Tidy3D</strong> 워크플로는 우리 스플리터·MMI·모드변환 설계에 도입 시 footprint를 크게 줄일 잠재력.</li>
+          <li>"제작 공정 제약을 최적화 목적함수에 포함"하는 방식은 설계-제작 간극을 줄이는 실용적 아이디어.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>출처</h2>
+      <div class="card">
+        <ul>
+          <li>저자: Aman Verma¹, Varun Raghunathan² (amanverma@iisc.ac.in, varunr@iisc.ac.in)</li>
+          <li>소속: Department of Electrical Communication Engineering, Indian Institute of Science (IISc), Bengaluru 560012, India</li>
+          <li>지원: DRDO, DST National Quantum Mission, IISc 나노제작 시설, Flexcompute(Tidy3D)</li>
+          <li>형식: 학회 발표 포스터 (Paper ID 02_1363, Presentation P2-18)</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Powered by Cloudflare Workers · <a href="https://github.com/chaktb/pages">소스 보기</a>
+  </footer>
+  <script src="/main.js"></script>
+</body>
+</html>
